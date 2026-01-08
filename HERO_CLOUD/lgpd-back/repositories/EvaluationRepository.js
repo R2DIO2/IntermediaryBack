@@ -1,17 +1,19 @@
 import Evaluation from "../models/Evaluation.js";
 
 const saveEvaluation = async (evaluationModel) => {
-  const save = await Evaluation.create(evaluationModel);
-  return save;
-};
+    const save = await Evaluation.create(evaluationModel);
+    return save;
+}
 
 const getAllEvaluations = async () => {
   return await Evaluation.findAll({
-    order: [["id", "ASC"]],
+    order: [
+      ['id', 'ASC']
+    ]
   });
 };
 
-const getEvaluationsById = async (id) => {
+const getEvaluationById = async (id) => {
   return await Evaluation.findByPk(id);
 };
 
@@ -19,28 +21,25 @@ const deleteEvaluationById = async (id) => {
   return await Evaluation.destroy({ where: { id: id } });
 };
 
-const updateEvaluationById = async (id, evaluationModel) => {
+const updateEvaluationById = async (id, EvaluationModel) => {
   try {
-    const result = await Evaluation.update(evaluationModel, {
-      where: { id: id },
-    });
-    if (result(0) === 1) {
-      return { message: "evaluation updated successfully." };
+    const result = await Evaluation.update(EvaluationModel, { where: { id: id } });
+    if (result[0] === 1) {
+      return { message: "Evaluation updated with success" };
     } else {
-      return {
-        message: `Cannot update evaluation with id=${id}. Maybe evaluation was not found or req.body is empty!`,
-      };
+      return { message: `Can't find Evaluation ${id} to update`, status: 404 };
     }
   } catch (error) {
-    return { message: "Error updating evaluation with id= " + id };
+    return error;
   }
 };
+
 const factory = {
-  saveEvaluation,
-  getAllEvaluations,
-  getEvaluationsById,
-  deleteEvaluationById,
-  updateEvaluationById,
-};
+    saveEvaluation,
+    getAllEvaluations,
+    getEvaluationById,
+    deleteEvaluationById,
+    updateEvaluationById
+  };
 
 export default factory;

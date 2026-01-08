@@ -1,31 +1,32 @@
 import evaluationRepository from "../repositories/EvaluationRepository.js";
 
 const saveEvaluation = (evaluationModel) => {
-  return evaluationRepository.saveEvaluation(evaluationModel);
-};
+    return evaluationRepository.saveEvaluation(evaluationModel);
+}
 
 const getEvaluationById = (id) => {
-  return evaluationRepository.getEvaluationById(id);
-};
+    return evaluationRepository.getEvaluationById(id);
+}
 
 const getAllEvaluations = () => {
-  return evaluationRepository.getAllEvaluations();
-};
+    return evaluationRepository.getAllEvaluations();
+}
 
-const deleteEvaluation = (id) => {
-  return evaluationRepository.deleteEvaluation(id);
-};
+const deleteEvaluationById = (id) => {
+    return evaluationRepository.deleteEvaluationById(id);
+}
 
-const updateEvaluation = (evaluationModel) => {
-  return evaluationRepository.updateEvaluation(evaluationModel);
-};
+const updateEvaluationById = (id, evaluationModel) => {
+    return evaluationRepository.updateEvaluationById(id, evaluationModel);
+}
 
 const service = {
-  saveEvaluation,
-  getEvaluationById,
-  getAllEvaluations,
-  deleteEvaluation,
-  updateEvaluation,
-};
+    saveEvaluation,
+    getEvaluationById,
+    getAllEvaluations,
+    deleteEvaluationById,
+    updateEvaluationById
+}
+
 
 export default service;

@@ -1,21 +1,17 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../utils/database.js";
+import DataTypes from 'sequelize';
+import sequelize from '../utils/database.js';
 
-const Teacher = sequelize.define(
-  "teachers",
-  {
+const Teacher = sequelize.define('teacher', {
     id: {
-      type: DataTypes.INTERGER,
-      autoIncrement: true,
-      allowNull: false,
-      primaryKey: true,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
     },
     name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-  },
-  { underscored: true }
-);
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
+},{ underscored : true });
 
 export default Teacher;
