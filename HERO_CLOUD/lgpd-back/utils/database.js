@@ -1,17 +1,12 @@
-import Sequelize from 'sequelize';
+import Sequelize from "sequelize";
 
-const sequelize = new Sequelize (
-    'lgpd-database',
-    'postgres',
-    'postgres',
-    {
-        host: 'localhost',
-        dialect: 'postgres',
-        port: 5432,
-        define: {
-            timestamps: false
-        }
-    }
-);
+const sequelize = new Sequelize("postgres", "postgres", "Diogenes100.", {
+  host: "localhost",
+  dialect: "postgres",
+  port: 5432,
+  define: {
+    timestamps: false,
+  },
+});
 
 export default sequelize;
