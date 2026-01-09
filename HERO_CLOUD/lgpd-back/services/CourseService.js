@@ -1,30 +1,32 @@
 import courseRepository from "../repositories/CourseRepository.js";
 
 const saveCourse = (courseModel) => {
-  return courseRepository.saveCourse(courseModel);
-};
+    return courseRepository.saveCourse(courseModel);
+}
 
 const getCourseById = (id) => {
-  return courseRepository.getCourseById(id);
-};
+    return courseRepository.getCourseById(id);
+}
 
 const getAllCourses = () => {
-  return courseRepository.getAllCourses();
-};
+    return courseRepository.getAllCourses();
+}
 
-const deleteCourse = (id) => {
-  return courseRepository.deleteCourse(id);
-};
+const deleteCourseById = (id) => {
+    return courseRepository.deleteCourseById(id);
+}
 
-const updateCourse = (courseModel) => {
-  return courseRepository.updateCourse(courseModel);
-};
+const updateCourseById = (id, courseModel) => {
+    return courseRepository.updateCourseById(id, courseModel);
+}
+
 const service = {
-  saveCourse,
-  getCourseById,
-  getAllCourses,
-  deleteCourse,
-  updateCourse,
-};
+    saveCourse,
+    getCourseById,
+    getAllCourses,
+    deleteCourseById,
+    updateCourseById
+}
+
 
 export default service;

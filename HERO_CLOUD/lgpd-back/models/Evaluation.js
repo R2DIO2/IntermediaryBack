@@ -1,21 +1,17 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../utils/database.js";
+import DataTypes from 'sequelize';
+import sequelize from '../utils/database.js';
 
-const Evaluation = sequelize.define(
-  "evaluations",
-  {
+const Evaluation = sequelize.define('evaluation', {
     id: {
-      type: DataTypes.INTERGER,
-      autoIncrement: true,
-      allowNull: false,
-      primaryKey: true,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
     },
     concept: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-  },
-  { underscored: true }
-);
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
+},{ underscored : true });
 
 export default Evaluation;

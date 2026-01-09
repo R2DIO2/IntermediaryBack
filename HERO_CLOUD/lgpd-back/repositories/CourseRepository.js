@@ -1,17 +1,19 @@
 import Course from "../models/Course.js";
 
 const saveCourse = async (courseModel) => {
-  const save = await Course.create(courseModel);
-  return save;
-};
+    const save = await Course.create(courseModel);
+    return save;
+}
 
 const getAllCourses = async () => {
   return await Course.findAll({
-    order: [["id", "ASC"]],
+    order: [
+      ['id', 'ASC']
+    ]
   });
 };
 
-const getCoursesById = async (id) => {
+const getCourseById = async (id) => {
   return await Course.findByPk(id);
 };
 
@@ -19,27 +21,26 @@ const deleteCourseById = async (id) => {
   return await Course.destroy({ where: { id: id } });
 };
 
-const updateCourseById = async (id, courseModel) => {
+const updateCourseById = async (id, CourseModel) => {
   try {
-    const result = await Course.update(courseModel, { where: { id: id } });
-    if (result(0) === 1) {
-      return { message: "course updated successfully." };
+    const result = await Course.update(CourseModel, { where: { id: id } });
+    if (result[0] === 1) {
+      return { message: "Course updated with success" };
     } else {
-      return {
-        message: `Cannot update course with id=${id}. Maybe course was not found or req.body is empty!`,
-      };
+      return { message: `Can't find Course ${id} to update`, status: 404 };
     }
   } catch (error) {
-    return { message: "Error updating course with id= " + id };
+    return error;
   }
 };
 
+
 const factory = {
-  saveCourse,
-  getAllCourses,
-  getCoursesById,
-  deleteCourseById,
-  updateCourseById,
-};
+    saveCourse,
+    getAllCourses,
+    getCourseById,
+    deleteCourseById,
+    updateCourseById
+  };
 
 export default factory;

@@ -1,6 +1,6 @@
-import { sequelize } from "sequelize";
+import Sequelize from "sequelize";
 
-const sequelize = new sequelize("lgpd_database", "postgres", "postgres", {
+const sequelize = new Sequelize("postgres", "postgres", "Diogenes100", {
   host: "localhost",
   dialect: "postgres",
   port: 5432,

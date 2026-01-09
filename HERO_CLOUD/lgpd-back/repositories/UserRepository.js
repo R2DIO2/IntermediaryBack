@@ -1,45 +1,53 @@
 import User from "../models/User.js";
 
-const saveUser = async (userModel) => {
-  const save = await User.create(userModel);
-  return save;
-};
-
-const getAllUsers = async () => {
-  return await User.findAll({
-    order: [["id", "ASC"]],
-  });
-};
-
-const getUsersById = async (id) => {
-  return await User.findByPk(id);
-};
-
-const deleteUserById = async (id) => {
-  return await User.destroy({ where: { id: id } });
-};
-
-const updateUserById = async (id, userModel) => {
-  try {
-    const result = await User.update(userModel, { where: { id: id } });
-    if (result(0) === 1) {
-      return { message: "User updated successfully." };
-    } else {
-      return {
-        message: `Cannot update User with id=${id}. Maybe User was not found or req.body is empty!`,
-      };
-    }
-  } catch (error) {
-    return { message: "Error updating User with id= " + id };
+//1- salvar usuario
+const saveUser = async (UserModel) => {
+    const save = await User.create(UserModel);
+    return save;
   }
-};
+  
+  //2- buscar todos usuarios
+  const getAllUsers = async () => {
+    return await User.findAll({
+      order: [
+        ['id', 'ASC']
+      ]
+    });
+  };
+  
+  //3- buscar por id
+  const getUserById = async (id) => {
+    return await User.findByPk(id); //primary key
+  };
+  
+  //4- deletar por id
+  const deleteUserById = async (id) => {
+    return await User.destroy({ where: { id: id } }); 
+    //primeiro é o atributo do banco segundo é o parametro da função
+  };
+  
+  //5- atualizar por id
+  const updateUserById = async (id, UserModel) => {
+    try {
+      const result = await User.update(UserModel, { where: { id: id } });
+      //primeiro é o atributo do banco segundo é o parametro da função
+      if (result[0] === 1) {
+        return { message: "User updated with success" };
+      } else {
+        return { message: `Can't find User ${id} to update`, status: 404 };
+      }
+    } catch (error) {
+      return error;
+    }
+  };
 
 const factory = {
-  saveUser,
-  getAllUsers,
-  getUsersById,
-  deleteUserById,
-  updateUserById,
+    saveUser,
+    getAllUsers,
+    getUserById,
+    updateUserById,
+    deleteUserById
 };
+
 
 export default factory;

@@ -1,20 +1,18 @@
 import express from "express";
-
 let router = express.Router();
-
 import userController from "./UserController.js";
-import courseController from "./CourseControler.js";
-import evaluationController from "./EvaluationControler.js";
 import teacherController from "./TeacherController.js";
+import evaluationController from "./EvaluationController.js";
+import courseController from "./CourseController.js";
 
-TimeoutError.get("/", function (req, res) {
-  console.log("Server is running");
-  res.status(200).json({ message: "Oi, servidor está rodando!" });
+router.get("/", function (req, res) {
+  console.log("hi!");
+  res.status(200).json({ message: "hi!" });
 });
 
 router.use("/", userController);
-router.use("/", courseController);
-router.use("/", evaluationController);
 router.use("/", teacherController);
+router.use("/", evaluationController);
+router.use("/", courseController);
 
 export default router;
